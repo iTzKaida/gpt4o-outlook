@@ -1,3 +1,6 @@
+<!-- Outlook Add-In Manifest + einfache HTML-Webseite zur GPT-4o-Nutzung (kostenloses Modell via Copy-Paste) -->
+
+<!-- 1. Outlook Add-In Manifest (manifest.xml) -->
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,9 +13,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="ChatGPT Assist"/>
   <Description DefaultValue="Verwende GPT-4o, um E-Mails zu analysieren, umzuformulieren oder Antworten zu generieren."/>
-  <IconUrl DefaultValue="https://yourdomain.com/icon32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://itzkaida.github.io/outlook-gpt4o-addin/test.png"/>
-  <SupportUrl DefaultValue="https://itzkaida.github.io/outlook-gpt4o-addin/taskpane.html"/>
+  <IconUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon64.png"/>
+  <SupportUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/support"/>
 
   <Hosts>
     <Host Name="Mailbox"/>
@@ -27,13 +30,13 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://yourdomain.com/taskpane.html"/>
+        <SourceLocation DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
     <Form xsi:type="ItemEdit">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://yourdomain.com/taskpane.html"/>
+        <SourceLocation DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -82,13 +85,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://yourdomain.com/icon16.png"/>
-        <bt:Image id="icon32" DefaultValue="https://yourdomain.com/icon32.png"/>
-        <bt:Image id="icon80" DefaultValue="https://yourdomain.com/icon80.png"/>
+        <bt:Image id="icon16" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="functionFile" DefaultValue="https://yourdomain.com/function-file.html"/>
-        <bt:Url id="taskPaneUrl" DefaultValue="https://yourdomain.com/taskpane.html"/>
+        <bt:Url id="functionFile" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/function-file.html"/>
+        <bt:Url id="taskPaneUrl" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="ChatGPT Assist"/>
@@ -100,3 +103,36 @@
     </Resources>
   </VersionOverrides>
 </OfficeApp>
+
+<!-- 2. taskpane.html (Frontend) -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>GPT-4o Assistent</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 15px; }
+    textarea { width: 100%; height: 150px; margin-bottom: 10px; }
+    button { padding: 10px 15px; }
+  </style>
+</head>
+<body>
+  <h2>ChatGPT Assistent (kostenlos)</h2>
+  <p>Kopiere deinen E-Mail-Text unten und klicke auf den Button, um GPT-4o über die Webseite zu verwenden.</p>
+  <textarea id="emailContent" placeholder="Hier Mailtext einfügen..."></textarea>
+  <button onclick="openChatGPT()">➤ Mit GPT-4o bearbeiten</button>
+  <p style="font-size: 0.9em; color: gray;">
+    Hinweis: Um zu verhindern, dass deine Eingaben im Chat-Verlauf gespeichert werden, kannst du in deinem OpenAI-Konto unter <a href="https://chat.openai.com/settings/data-controls" target="_blank">Einstellungen → Data Controls</a> den Chatverlauf deaktivieren.
+  </p>
+
+  <script>
+    function openChatGPT() {
+      const text = document.getElementById("emailContent").value;
+      const encoded = encodeURIComponent(text);
+      const url = `https://chat.openai.com/?prompt=${encoded}`;
+      Office.context.ui.displayDialogAsync(url, { height: 70, width: 40 });
+    }
+  </script>
+</body>
+</html>
