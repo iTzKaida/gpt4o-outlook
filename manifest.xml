@@ -11,8 +11,8 @@
   <DisplayName DefaultValue="ChatGPT Assist"/>
   <Description DefaultValue="Verwende GPT-4o, um E-Mails zu analysieren, umzuformulieren oder Antworten zu generieren."/>
   <IconUrl DefaultValue="https://yourdomain.com/icon32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://yourdomain.com/icon64.png"/>
-  <SupportUrl DefaultValue="https://yourdomain.com/support"/>
+  <HighResolutionIconUrl DefaultValue="https://itzkaida.github.io/outlook-gpt4o-addin/test.png"/>
+  <SupportUrl DefaultValue="https://itzkaida.github.io/outlook-gpt4o-addin/taskpane.html"/>
 
   <Hosts>
     <Host Name="Mailbox"/>
