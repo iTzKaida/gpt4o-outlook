@@ -7,7 +7,7 @@
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
            xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
-  <Id>your-guid-here</Id>
+  <Id>b7dfcc6f-0bac-4120-b012-665dc455c42c</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Pandora IT</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
