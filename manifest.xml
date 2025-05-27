@@ -57,7 +57,7 @@
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <FunctionFile resid="functionFile"/>
+          <!-- FunctionFile entfernt, da nicht verwendet -->
           <ExtensionPoint xsi:type="MessageComposeCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgComposeGroup">
@@ -90,7 +90,7 @@
         <bt:Image id="icon80" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="functionFile" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/function-file.html"/>
+        <!-- Funktion-File-URL entfernt -->
         <bt:Url id="taskPaneUrl" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
