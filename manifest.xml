@@ -1,3 +1,136 @@
-Validation Information:
-Error #1:
-Package Loading Failure: Provided add-in package was not understood. Please, make sure that the file being submitted is a valid Office add-in package.
+<!-- Outlook Add-In Manifest + einfache HTML-Webseite zur GPT-4o-Nutzung (kostenloses Modell via Copy-Paste) -->
+
+<!-- 1. Outlook Add-In Manifest (manifest.xml) -->
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+           xsi:type="MailApp">
+  <Id>e3b0c442-98fc-4621-a6a2-cb0d8a8a0087</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Pandora IT</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="ChatGPT Assist"/>
+  <Description DefaultValue="Verwende GPT-4o, um E-Mails zu analysieren, umzuformulieren oder Antworten zu generieren."/>
+  <IconUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon64.png"/>
+  <SupportUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/support"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="Mailbox"/>
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+  <Form xsi:type="ItemRead" Mode="Read">
+    <DesktopSettings>
+      <SourceLocation DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
+    </DesktopSettings>
+  </Form>
+  <Form xsi:type="ItemEdit" Mode="Edit">
+    <DesktopSettings>
+      <SourceLocation DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
+    </DesktopSettings>
+  </Form>
+</FormSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+
+  <Rule xsi:type="RuleCollection">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
+  </Rule>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.5">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgComposeGroup">
+                <Label resid="groupLabel"/>
+                <Control xsi:type="Button" id="openPaneButton">
+                  <Label resid="paneButtonLabel"/>
+                  <Supertip>
+                    <Title resid="paneButtonLabel"/>
+                    <Description resid="paneButtonDescription"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskPane">
+                    <SourceLocation resid="taskPaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <!-- Funktion-File-URL entfernt -->
+        <bt:Url id="taskPaneUrl" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="ChatGPT Assist"/>
+        <bt:String id="paneButtonLabel" DefaultValue="GPT-4o Hilfe"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="paneButtonDescription" DefaultValue="Öffne ein GPT-4o Fenster zur Textanalyse."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
+
+<!-- 2. taskpane.html (Frontend) -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>GPT-4o Assistent</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 15px; }
+    textarea { width: 100%; height: 150px; margin-bottom: 10px; }
+    button { padding: 10px 15px; }
+  </style>
+</head>
+<body>
+  <h2>ChatGPT Assistent (kostenlos)</h2>
+  <p>Kopiere deinen E-Mail-Text unten und klicke auf den Button, um GPT-4o über die Webseite zu verwenden.</p>
+  <textarea id="emailContent" placeholder="Hier Mailtext einfügen..."></textarea>
+  <button onclick="openChatGPT()">➤ Mit GPT-4o bearbeiten</button>
+  <p style="font-size: 0.9em; color: gray;">
+    Hinweis: Um zu verhindern, dass deine Eingaben im Chat-Verlauf gespeichert werden, kannst du in deinem OpenAI-Konto unter <a href="https://chat.openai.com/settings/data-controls" target="_blank">Einstellungen → Data Controls</a> den Chatverlauf deaktivieren.
+  </p>
+
+  <script>
+    function openChatGPT() {
+      const text = document.getElementById("emailContent").value;
+      const encoded = encodeURIComponent(text);
+      const url = `https://chat.openai.com/?prompt=${encoded}`;
+      Office.context.ui.displayDialogAsync(url, { height: 70, width: 40 });
+    }
+  </script>
+</body>
+</html>
