@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>GPT-4o Assistent</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 15px; }
+    textarea { width: 100%; height: 150px; margin-bottom: 10px; }
+    button { padding: 10px 15px; }
+  </style>
+</head>
+<body>
+  <h2>ChatGPT Assistent (kostenlos)</h2>
+  <p>Kopiere deinen E-Mail-Text unten und klicke auf den Button, um GPT-4o über die Webseite zu verwenden.</p>
+  <textarea id="emailContent" placeholder="Hier Mailtext einfügen..."></textarea>
+  <button onclick="openChatGPT()">➤ Mit GPT-4o bearbeiten</button>
+  <p style="font-size: 0.9em; color: gray;">
+    Hinweis: Um zu verhindern, dass deine Eingaben im Chat-Verlauf gespeichert werden, kannst du in deinem OpenAI-Konto unter <a href="https://chat.openai.com/settings/data-controls" target="_blank">Einstellungen → Data Controls</a> den Chatverlauf deaktivieren.
+  </p>
+
+  <script>
+    function openChatGPT() {
+      const text = document.getElementById("emailContent").value;
+      const encoded = encodeURIComponent(text);
+      const url = `https://chat.openai.com/?prompt=${encoded}`;
+      Office.context.ui.displayDialogAsync(url, { height: 70, width: 40 });
+    }
+  </script>
+</body>
+</html>
