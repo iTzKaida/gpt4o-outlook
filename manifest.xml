@@ -9,7 +9,7 @@
            xsi:type="MailApp">
   <Id>e3b0c442-98fc-4621-a6a2-cb0d8a8a0087</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Pandora IT</ProviderName>
+  <ProviderName>iTzKaida</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="ChatGPT Assist"/>
   <Description DefaultValue="Verwende GPT-4o, um E-Mails zu analysieren, umzuformulieren oder Antworten zu generieren."/>
