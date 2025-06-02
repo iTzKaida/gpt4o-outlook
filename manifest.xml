@@ -84,7 +84,7 @@
     <Resources>
       <bt:Images>
         <bt:Image id="icon16" DefaultValue="https://gpt4o-outlook.vercel.app/icon16.png"/>
-        <bt:Image id="icon32" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon32.png"/>
+        <bt:Image id="icon32" DefaultValue="https://gpt4o-outlook.vercel.app/icon32.png"/>
         <bt:Image id="icon80" DefaultValue="https://gpt4o-outlook.vercel.app/icon80.png"/>
       </bt:Images>
       <bt:Urls>
