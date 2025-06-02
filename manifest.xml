@@ -13,9 +13,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="ChatGPT Assist"/>
   <Description DefaultValue="Verwende GPT-4o, um E-Mails zu analysieren, umzuformulieren oder Antworten zu generieren."/>
-  <IconUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon64.png"/>
-  <SupportUrl DefaultValue="https://itzkaida.github.io/gpt4o-outlook/support"/>
+  <IconUrl DefaultValue="https://gpt4o-outlook.vercel.app/icon32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://gpt4o-outlook.vercel.app/icon80.png"/>
+  <SupportUrl DefaultValue="https://gpt4o-outlook.vercel.app/"/>
 
   <Hosts>
     <Host Name="Mailbox"/>
@@ -30,12 +30,12 @@
   <FormSettings>
   <Form xsi:type="ItemRead" Mode="Read">
     <DesktopSettings>
-      <SourceLocation DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
+      <SourceLocation DefaultValue="https://gpt4o-outlook.vercel.app/taskpane.html"/>
     </DesktopSettings>
   </Form>
   <Form xsi:type="ItemEdit" Mode="Edit">
     <DesktopSettings>
-      <SourceLocation DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
+      <SourceLocation DefaultValue="https://gpt4o-outlook.vercel.app/taskpane.html"/>
     </DesktopSettings>
   </Form>
 </FormSettings>
@@ -83,13 +83,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon16.png"/>
+        <bt:Image id="icon16" DefaultValue="https://gpt4o-outlook.vercel.app/icon16.png"/>
         <bt:Image id="icon32" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon32.png"/>
-        <bt:Image id="icon80" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/icon80.png"/>
+        <bt:Image id="icon80" DefaultValue="https://gpt4o-outlook.vercel.app/icon80.png"/>
       </bt:Images>
       <bt:Urls>
         <!-- Funktion-File-URL entfernt -->
-        <bt:Url id="taskPaneUrl" DefaultValue="https://itzkaida.github.io/gpt4o-outlook/taskpane.html"/>
+        <bt:Url id="taskPaneUrl" DefaultValue="https://gpt4o-outlook.vercel.app/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="ChatGPT Assist"/>
